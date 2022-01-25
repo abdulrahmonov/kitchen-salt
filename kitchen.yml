@@ -1,22 +1,35 @@
 ---
+#The driver is what deploys our infrastructure out. 
+#It can be a hypervisor, cloud provider, abstraction layer to the hypervisor.
 driver:
   name: azurerm
-  some_config: true
+  #This is Global Configuration option. It sets the driver to azurerm and then sets the all platforms inside 
+  #the kitchen.yml to use its configuration.
+  some_config: true 
+  #Using username and password will be needed if you decide to connect and troublshoot the VM.
   username: admin
   password: UseStrongP@ssword2022
 driver_config:
-  subscription_id: 'your-azure-subscription-id-here'
+  #Your azure acoount subscribtion id is needed.
+  subscription_id: 'your-azure-subscribtion-id-here'
   location: 'Central US'
   machine_size: 'Standard_DS2_v2'
+
 provisioner:
   name: salt_solo
+  #salt_install ensures we’re using the bootstrap script to install.
   salt_install: bootstrap
   salt_version: latest
   log_level: info
   sudo: true
+  #Treats the root directory of this project as a complete file root. 
+  is_file_root: true
+  #local_salt_root will require that a salt directory be located at srv/salt/ with all the state files in it.
   local_salt_root: './srv'
+  #Below command will require top.sls file to be located with states directory under the srv/salt/
   state_top_from_file: true
   require_chef: false
+  #List of filenames and directories to be excluded when copying to the test servers.
   salt_copy_filter:
     - __pycache__
     - '*.pyc'
@@ -27,17 +40,21 @@ provisioner:
     - .git
     - .gitignore
     - .kitchen
-    - .kitchen.yml
+    - kitchen.yml
     - Gemfile
     - Gemfile.lock
     - README.rst
 platforms:
-  name: windows-2019
-  driver_config:
-    image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter-smalldisk:latest
-  transport:
-    name: winrm
-    elevated: true
+  - name: windows-2019
+    driver_config:
+      #Image URN is used for vm creation.
+      image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter-smalldisk:latest
+    #transport - specifies which transport to use when executing commands remotely on the test instance. 
+    #winrm is the default transport on Windows. The ssh transport is the default on all other operating systems.
+    transport:
+      name: winrm
+      elevated: true
+#suite is a combination of the platforms you provide and a software suite to test on.
 suites:
-  name: default
-  attributes:
+  - name: default
+    attributes:
