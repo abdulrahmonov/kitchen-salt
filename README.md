@@ -1,5 +1,6 @@
 # kitchen-salt installation
 Hello and Welcome!!!
+
 To install kitchen-salt please follow the steps below and create your own kitchen-salt environment. Let’s go!!!
 
 This is our directory structure:
