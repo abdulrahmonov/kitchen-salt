@@ -3,6 +3,7 @@ Hello and Welcome!!!
 To install kitchen-salt please follow the steps below and create your own kitchen-salt environment. Let’s go!!!
 
 This is our directory structure:
+```
 +——-  kitchen-salt
 |          |   kitchen.yml
 |          |   Gemfile
@@ -17,6 +18,7 @@ This is our directory structure:
 |                     \ --- clamav
 |                           | —- init.sls
 |                           | —- clamav-0.104.2.win.x64.msi
+```
 
 Step 1.
 Download and install ruby: https://rubyinstaller.org/downloads/ 
@@ -183,6 +185,7 @@ Commands:
 ```
 
 
-You are all set!!! By the way don’t forget to run `kitchen destroy`  to delete  and check your environment. 
-NOTE: If your tests are succeeded, `kitchen test` will only destroy the VM, but your vnet, public, and other resources won’t be deleted. 
+You are all set. By the way don’t forget to run `kitchen destroy`  to delete  and check your environment. 
+NOTE: If your tests succeeded,  `kitchen test` will only destroy the VM, but your vnet, public, and other resources won’t be deleted. 
+
 
