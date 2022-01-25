@@ -73,6 +73,7 @@ Source: [GitHub - test-kitchen/kitchen-azurerm: A driver for Test Kitchen that w
 *On Mac*: Install azure cli :
  `$ brew update && brew install azure-cli`
 *On Windows* follow the steps on this link to install azure cli :https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+
 Step 6.
 `az ad sp create-for-rbac` (creates Azure service principal)
 
