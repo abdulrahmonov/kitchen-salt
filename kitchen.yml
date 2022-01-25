@@ -7,7 +7,7 @@ driver:
   #the kitchen.yml to use its configuration.
   some_config: true 
   #Using username and password will be needed if you decide to connect and troublshoot the VM.
-  username: admin
+  username: saltadmin
   password: UseStrongP@ssword2022
 driver_config:
   #Your azure acoount subscribtion id is needed.
