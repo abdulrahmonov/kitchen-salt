@@ -1,0 +1,43 @@
+---
+driver:
+  name: azurerm
+  some_config: true
+  username: admin
+  password: UseStrongP@ssword2022
+driver_config:
+  subscription_id: 'your-azure-subscription-id-here'
+  location: 'Central US'
+  machine_size: 'Standard_DS2_v2'
+provisioner:
+  name: salt_solo
+  salt_install: bootstrap
+  salt_version: latest
+  log_level: info
+  sudo: true
+  local_salt_root: './srv'
+  state_top_from_file: true
+  require_chef: false
+  salt_copy_filter:
+    - __pycache__
+    - '*.pyc'
+    - .tox
+    - .nox
+    - artifacts
+    - .bundle
+    - .git
+    - .gitignore
+    - .kitchen
+    - .kitchen.yml
+    - Gemfile
+    - Gemfile.lock
+    - README.rst
+platforms:
+  name: windows-2019
+  driver_config:
+    image_urn: MicrosoftWindowsServer:WindowsServer:2019-Datacenter-smalldisk:latest
+  transport:
+    name: winrm
+    elevated: true
+suites:
+  name: default
+  attributes:
